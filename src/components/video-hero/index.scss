@@ -1,0 +1,33 @@
+.video-hero {
+    
+}
+
+.video-hero {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+.video-container {
+position: relative;
+width: 100%;
+}
+
+video {
+width: 100%;
+height: auto;
+}
+
+.text-overlay {
+position: absolute;
+top: 0;
+left: 50%;
+transform: translateX(-50%);
+background-color: rgba(0, 0, 0, 0.2); /* Applica il filtro nero con opacità 0.2 */
+padding: 20px;
+color: #fff; /* Colore del testo */
+}
+
+h1 {
+margin: 0;
+}

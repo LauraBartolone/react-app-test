@@ -1,0 +1,50 @@
+header.navbar {
+    background-color: $white;
+    .navbar-nav {
+        .nav-link {
+            color: $text-color;
+            padding: 24px 12px;
+            @include breakpoint(xl, min) {
+                padding: 24px 18px;
+            }
+        }
+    }
+
+    .navbar-brand {
+        @include breakpoint(lg, max) {
+            order: 2;
+            margin-left: 12px;
+        }
+        img {
+            width: 100px;
+            height: auto;
+        }
+    }
+    .search-icon {
+        color: $text-color-ligth;
+        padding: 24px 30px;
+        @include breakpoint(xl, max) {
+            padding: 24px 18px;
+        }
+        cursor: pointer;
+        &:hover {
+            color: $text-color;
+        }
+    }
+
+    &.navbar-light .navbar-toggler {
+        border: none;
+        @include breakpoint(lg, max) {
+            order: 1;
+        }
+    }
+    .btn-outline-primary {
+        @include breakpoint(lg, max) {
+            order: 3;
+            margin-left: auto;
+        }
+    }
+    .navbar-collapse {
+        order: 4;
+    }
+}

@@ -1,0 +1,39 @@
+$breakpoints: (
+    xs: 0,
+    sm: 576px,
+    md: 768px,
+    lg: 992px,
+    xl: 1200px,
+    xxl: 1400px
+) !default;
+
+@function is-number($value) {
+    @return type-of($value) == "number";
+}
+
+@function is-absolute-length($value) {
+    @return is-number($value) and index("cm" "mm" "in" "px" "pt" "pc", unit($value)) !=null;
+}
+
+@mixin breakpoint($breakpoint, $dir : min) {
+    @if is-absolute-length($breakpoint) {
+        @media only screen and (#{$dir}-width: $breakpoint) {
+            @content;
+        }
+    }
+
+    @else {
+        @media only screen and (#{$dir}-width: map-get($map: $breakpoints, $key: $breakpoint)) {
+            @content;
+        }
+    }
+}
+
+@mixin line-clamp($line: 2) {
+    /* autoprefixer: off */
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: $line;
+    /* autoprefixer: on */
+    overflow: hidden;
+}

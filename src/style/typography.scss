@@ -1,0 +1,179 @@
+@font-face {
+  font-family: "Averta";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("./fonts/AvertaDemoPECuttedDemo-Regular.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Noe Display";
+  font-style: normal;
+  font-weight: bold;
+  font-display: swap;
+  src: url("./fonts/FontsFree-Net-NoeDisplay-Bold.ttf") format("truetype");
+}
+
+/* --------------------------------
+Font Variables + mixin
+-------------------------------- */
+
+$primary-font: "Averta", "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+$secondary-font: "Noe Display", "Impact", Arial, Helvetica, Geneva, sans-serif;
+$title-line-height: 0.9;
+
+$bodyText: $black;
+
+
+body {
+  font-family: $primary-font;
+  -webkit-font-smoothing: antialiased;
+  color: $bodyText;
+}
+
+@mixin t-primary-regular {
+  font-family: $primary-font;
+}
+
+@mixin t-primary-bold {
+  font-family: $primary-font;
+}
+
+@mixin t-secondary-regular {
+  font-family: $secondary-font;
+}
+
+@mixin t-secondary-extra-bold {
+  font-family: $secondary-font;
+}
+
+strong {
+  font-weight: bold;
+}
+
+
+@mixin t-headline-1($h1: 52px, $decrese-factor: 1.47) {
+  @include t-primary-bold;
+  font-family: $secondary-font;
+  font-size: round($h1 / $decrese-factor);
+  letter-spacing: 0;
+  line-height: $title-line-height;
+  //text-align: left;
+  @include breakpoint(sm) {
+    font-size: $h1;
+  }
+  @content;
+}
+
+@mixin t-headline-2 {
+  @include t-headline-1(48px);
+}
+
+@mixin t-headline-3 {
+  @include t-headline-1(34px);
+}
+
+@mixin t-headline-4 {
+  @include t-headline-1(26px);
+}
+
+@mixin t-headline-5 {
+  @include t-headline-1(16px) {
+    font-size: 16px;
+  }
+}
+
+@mixin t-bodycopy-small {
+  @include t-primary-regular;
+  font-size: 14px;
+  line-height: 1.1;
+  text-align: left;
+}
+
+@mixin t-bodycopy-1 {
+  @include t-primary-regular;
+  font-size: 16px;
+  letter-spacing: 0.5px;
+  line-height: 1.5;
+  text-align: left;
+}
+
+@mixin t-bodycopy-2($p: 19px, $decrese-factor: 1.2) {
+  @include t-primary-regular;
+  letter-spacing: 0;
+  line-height: 1.5;
+  text-align: left;
+  font-size: round($p / $decrese-factor);
+  @include breakpoint(sm) {
+    font-size: $p;
+  }
+}
+
+@mixin t-bodycopy-3 {
+  @include t-primary-regular;
+  font-size: 26px;
+  text-align: left;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+  line-height: 1;
+  @content;
+}
+
+@mixin t-blockquote {
+  @include t-secondary-regular;
+  font-size: 23px;
+  line-height: 1.69;
+  text-align: left;
+}
+
+@mixin underlined-title($color: $blue) {
+  // TODO
+}
+
+////////////////////////////////////////
+//BASE TYPOGRAPHY & ENTRY STYLES
+////////////////////////////////////////
+
+
+.t-headline-2 {
+  @include t-headline-2();
+}
+
+.t-headline-3 {
+  @include t-headline-3();
+}
+
+.t-headline-4 {
+  @include t-headline-4();
+}
+.t-bodycopy-small {
+  @include t-bodycopy-small();
+  p {
+    @include t-bodycopy-small();
+  }
+}
+
+.t-bodycopy-2 {
+  @include t-bodycopy-2();
+  p {
+    @include t-bodycopy-2();
+  }
+}
+
+
+.link--small {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.text-ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+}
+
+
+.line-clamp-1 {
+    @include line-clamp(1);
+}
