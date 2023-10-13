@@ -1,0 +1,6 @@
+.container-md {
+    @include breakpoint(md, max) {
+        padding-left: 0;
+        padding-right: 0;
+    }
+}

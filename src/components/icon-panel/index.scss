@@ -1,0 +1,26 @@
+.icon-panel {
+    &.--default {
+        .icon-panel__title {
+            @include t-bodycopy-title();
+        }
+        .icon-panel__description {
+            margin-bottom: 0;
+        }
+        .icon-panel__icon {
+            color: $blue;
+            font-size: 4rem;
+            margin: auto;
+            margin-bottom: $spacing-sm;
+        }
+
+        @include breakpoint(md, max) {
+            text-align: center;
+            .icon-panel__title {
+                text-align: center;
+
+            }
+        }
+    
+        
+    }
+}

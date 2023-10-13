@@ -5,7 +5,7 @@ import MenuItem from '@mui/material/MenuItem';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import SearchIcon from '@mui/icons-material/Search';
 import MenuIcon from '@mui/icons-material/Menu';
-
+import { Link } from "react-router-dom";
 
 const Header = () => {
     const [language, setLanguage] = React.useState('it'); 
@@ -26,12 +26,12 @@ const Header = () => {
                 <MenuIcon/>
             </button>
             
-            <button className="btn btn-outline-primary d-block d-lg-none">Login</button>
+            <button className="btn btn-outline-primary btn--small d-block d-lg-none">Login</button>
 
             <div className="collapse navbar-collapse" id="navbarNav">
                 <ul className="navbar-nav mx-auto">
                     <li className="nav-item">
-                        <a className="nav-link" href="#">Destinations</a>
+                        <Link className="nav-link" to="/search">Search</Link>
                     </li>
                     <li className="nav-item">
                         <a className="nav-link" href="#">Villas</a>
@@ -68,7 +68,7 @@ const Header = () => {
                     <div className="search-icon">
                         <SearchIcon/>
                     </div>
-                    <button className="btn btn-outline-primary">Login</button>
+                    <button className="btn btn-outline-primary btn--small">Login</button>
                 </div>
             </div>
         </div>

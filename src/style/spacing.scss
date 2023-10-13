@@ -1,0 +1,11 @@
+$spacing-xs: 0.4rem;
+$spacing-sm: 1rem;
+$spacing-md: 1.5rem;
+$spacing-lg: 2rem;
+$spacing-xl: 4rem;
+$spacing-xxl: 6rem;
+
+
+.section-spacing {
+    @include section_spacing(1.5, padding);
+}

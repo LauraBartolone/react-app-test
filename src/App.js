@@ -1,19 +1,24 @@
-import logo from './logo.svg';
+import ReactDOM from "react-dom/client";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Layout from "./pages/Layout";
+import Home from "./pages/Home";
+import Search from "./pages/Search";
 import './App.scss';
-import { ThemeProvider } from '@mui/material/styles';
-import theme from './theme-mui';
-import './custom-bs-bundle/bootstrap';
-import Header from './components/header';
 
-function App() {
+
+export default function App() {
   return (
-    <ThemeProvider theme={theme}>
-    <div className="App">
-      <Header />
-      
-    </div>
-</ThemeProvider>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path="search" element={<Search />} />
+        
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
-export default App;
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<App />);

@@ -7,6 +7,14 @@
 }
 
 @font-face {
+  font-family: "Averta";
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("./fonts/averta-light-italic.otf") format("opentype");
+}
+
+@font-face {
   font-family: "Noe Display";
   font-style: normal;
   font-weight: bold;
@@ -20,7 +28,7 @@ Font Variables + mixin
 
 $primary-font: "Averta", "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
 $secondary-font: "Noe Display", "Impact", Arial, Helvetica, Geneva, sans-serif;
-$title-line-height: 0.9;
+$title-line-height: 1.3;
 
 $bodyText: $black;
 
@@ -35,9 +43,6 @@ body {
   font-family: $primary-font;
 }
 
-@mixin t-primary-bold {
-  font-family: $primary-font;
-}
 
 @mixin t-secondary-regular {
   font-family: $secondary-font;
@@ -52,9 +57,8 @@ strong {
 }
 
 
-@mixin t-headline-1($h1: 52px, $decrese-factor: 1.47) {
-  @include t-primary-bold;
-  font-family: $secondary-font;
+@mixin t-headline-1($h1: 42px, $decrese-factor: 1.3) {
+  @include t-secondary-regular();
   font-size: round($h1 / $decrese-factor);
   letter-spacing: 0;
   line-height: $title-line-height;
@@ -65,12 +69,16 @@ strong {
   @content;
 }
 
+.t-headline-1 {
+  @include t-headline-1();
+}
+
 @mixin t-headline-2 {
-  @include t-headline-1(48px);
+  @include t-headline-1(38px);
 }
 
 @mixin t-headline-3 {
-  @include t-headline-1(34px);
+  @include t-headline-1(30px);
 }
 
 @mixin t-headline-4 {
@@ -109,19 +117,21 @@ strong {
   }
 }
 
-@mixin t-bodycopy-3 {
+@mixin t-bodycopy-title {
   @include t-primary-regular;
-  font-size: 26px;
+  font-size: 1.2rem;
   text-align: left;
-  font-weight: 600;
+  font-weight: bold;
   letter-spacing: -0.5px;
   line-height: 1;
   @content;
 }
 
 @mixin t-blockquote {
-  @include t-secondary-regular;
-  font-size: 23px;
+  @include t-primary-regular;
+  font-size: 1.2rem;
+  font-style: italic;
+  font-weight: normal;
   line-height: 1.69;
   text-align: left;
 }

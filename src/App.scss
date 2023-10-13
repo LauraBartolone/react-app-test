@@ -2,10 +2,16 @@
 @import 'style/mixins';
 @import 'custom-bs-bundle/bootstrap.min';
 @import 'style/typography';
+@import 'style/grid';
+@import 'style/spacing';
 
 @import 'components/header/index';
 @import 'components/button/index';
-
-
-
+@import 'components/video-hero/index';
+@import 'components/bg-panel/index';
+@import 'components/text-panel/index';
+@import 'components/icon-panel/index';
+@import 'components/swiper-carousel/index';
+@import 'components/card/index';
+@import 'components/reviews/index';
 

@@ -4,3 +4,63 @@
         color: $white;
     }
 }
+
+@keyframes buttonPrimaryAnimation {
+    0% {
+      width: 0; /* Larghezza iniziale */
+      height: 1;
+    }
+    100% {
+      width: 100%; /* Larghezza finale */
+      height: 100%;
+    }
+}
+
+.btn {
+    padding: 12px 28px;
+    font-size: 14px;
+}
+.btn--small {
+    padding: 6px 12px;
+}
+
+.btn-primary {
+    letter-spacing: 1.5px;
+    font-weight: bold;
+    text-transform: uppercase;
+    @include breakpoint(md, min) {
+        background: #fff;
+        color: $text-color;
+        position: relative;
+        border: none;
+        &:before {
+            content: '';
+            background: $primary;
+            position: absolute;
+            left: 0;
+            width: 20px;
+            height: 2px;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+        }
+        &:hover {
+            background: none;
+            color: #fff;
+            &:before {
+                animation: buttonPrimaryAnimation 1s forwards;
+                z-index: -1;
+            }
+        }
+    }
+}
+
+.btn-link {
+    text-transform: uppercase;
+    text-decoration: none;
+    padding-left: 0;
+    padding-right: 0;
+    &.btn-link--light {
+        color: $white;
+    }
+}

@@ -1,0 +1,12 @@
+.text-panel {
+    &.text-panel--default {
+        .text-panel__title {
+            @include t-headline-1();
+            margin-bottom: $spacing-md;
+        }
+        .text-panel__description {
+            margin-bottom: $spacing-md;
+        }
+        
+    }
+}

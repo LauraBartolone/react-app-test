@@ -1,0 +1,34 @@
+
+.bg-panel {
+    position: relative;
+    &.container-right {
+        .bg-panel-wrap {
+            background-position: right;
+            background-size: 58%;
+            background-repeat: no-repeat;
+            @include breakpoint(md, max) {
+                background: none!important;
+            }
+        }
+    }
+    &.full, &.full--inverted {
+        .bg-panel-full__image {
+            background: $grey-light;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+
+            clip-path: polygon(100% 0, 100% 57%, 0 100%, 0 42%);
+            @include breakpoint(lg, max) {
+                clip-path: polygon(100% 0, 99% 79%, 0 100%, 0 23%);
+            }
+            
+            z-index: -1;
+        }
+    }
+    &.full--inverted .bg-panel-full__image {
+        transform: scaleX(-1);
+    }
+}
