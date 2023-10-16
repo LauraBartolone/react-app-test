@@ -21,7 +21,13 @@
   font-display: swap;
   src: url("./fonts/FontsFree-Net-NoeDisplay-Bold.ttf") format("truetype");
 }
-
+@font-face {
+  font-family: "Noe Display";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("./fonts/FontsFree-Net-Noe-Display-Medium.ttf") format("truetype");
+}
 /* --------------------------------
 Font Variables + mixin
 -------------------------------- */
@@ -62,6 +68,7 @@ strong {
   font-size: round($h1 / $decrese-factor);
   letter-spacing: 0;
   line-height: $title-line-height;
+  font-weight: bold;
   //text-align: left;
   @include breakpoint(sm) {
     font-size: $h1;
@@ -86,11 +93,15 @@ strong {
 }
 
 @mixin t-headline-5 {
-  @include t-headline-1(16px) {
+  @include t-headline-1(22px) {
     font-size: 16px;
   }
 }
-
+@mixin t-headline-6 {
+  @include t-headline-1(18px) {
+    font-size: 16px;
+  }
+}
 @mixin t-bodycopy-small {
   @include t-primary-regular;
   font-size: 14px;
@@ -155,6 +166,9 @@ strong {
 
 .t-headline-4 {
   @include t-headline-4();
+}
+.t-headline-6 {
+  @include t-headline-6();
 }
 .t-bodycopy-small {
   @include t-bodycopy-small();

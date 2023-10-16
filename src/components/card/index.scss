@@ -1,56 +1,100 @@
 .card {
-    &.card--image {
-      display: block;
-      @include square(19);
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+  text-decoration: none;
+
+  .card__image {
+    width: 100%;
+    height: auto;
+    
+  }
+
+  &:hover {
+    transform: translateY(-4px);
+    transition: transform 0.1s;
+    // box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px, rgba(0, 0, 0, 0.07) 0px 4px 4px, rgba(0, 0, 0, 0.07) 0px 8px 8px, rgba(0, 0, 0, 0.07) 0px 16px 16px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px 0px;
+  
+  }
+
+  &.card--default {
+    .card__title {
+      @include t-headline-6();
+      margin-bottom: 0;
+      text-decoration: none;
+    }
+    .card__subtitle {
+      margin-bottom: 0;
+      @include t-bodycopy-small();
+    }
+    .card__image-wrap {
+      @include square(9);
       @include imageWrapper();
       position: relative;
-      
-      background: linear-gradient(rgba(0, 0, 0, 0) 30%, rgba(0, 0, 0, 0.6) 100%), var(--image) center/cover;
-      height: 100%;
-      box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
-    
-      .card__title {
-        @include t-bodycopy-title();
-      }
-      .card__text {
-        margin-bottom: 0;
-      }
-      .card__body-icon {
-        width: 6rem;
-        height: auto;
-        float: right;
-        opacity: 0.8;
-      }
-      .card__body-left {
-        float: left;
-        width: calc(100% - 6rem);
-      }
-      .card__body {
+      .card__body-on-image {
         position: absolute;
         bottom: 0;
-        padding: 20px;
-        color: white;
+        left: 0;
+        padding: 12px;
+        width: 100%;
+        color: #fff;
+        backdrop-filter: blur(4px);
       }
+    }
+
+  }
+
+  &.card--image {
+    display: block;
+    @include square(19);
+    @include imageWrapper();
+    position: relative;
+
+    margin: 12px;
+    
+    background: linear-gradient(rgba(0, 0, 0, 0) 30%, rgba(0, 0, 0, 0.6) 100%), var(--image) center/cover;
+    height: 100%;
+  
+    .card__title {
+      @include t-bodycopy-title();
+    }
+    .card__text {
+      margin-bottom: 0;
+    }
+    .card__body-icon {
+      width: 6rem;
+      height: auto;
+      float: right;
+      opacity: 0.8;
+    }
+    .card__body-left {
+      float: left;
+      width: calc(100% - 6rem);
+    }
+    .card__body {
+      position: absolute;
+      bottom: 0;
+      padding: 20px;
+      color: white;
+    }
+    .btn-link {
+      height: 0;
+      padding: 0;
+      overflow: hidden;
+      transition: all 0.1s;
+      margin-top: 0;
+      display: block;
+    }
+    &:hover {
       .btn-link {
-        height: 0;
-        padding: 0;
-        overflow: hidden;
         transition: all 0.1s;
-        margin-top: 0;
-        display: block;
+        height: 100%;
+        margin-top: 24px;
       }
-      &:hover {
-        transform: translateY(-8px);
-        transition: transform 0.1s;
-        box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px, rgba(0, 0, 0, 0.07) 0px 4px 4px, rgba(0, 0, 0, 0.07) 0px 8px 8px, rgba(0, 0, 0, 0.07) 0px 16px 16px;
-        .btn-link {
-          transition: all 0.1s;
-          height: 100%;
-          margin-top: 24px;
-        }
-        .card__body-icon {
-          opacity: 1;
-        }
+      .card__body-icon {
+        opacity: 1;
       }
+      
+    }
+    
   }
 }

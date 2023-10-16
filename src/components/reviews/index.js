@@ -66,7 +66,7 @@ const Reviews = ({title}) => {
    <div className="row reviews swiper-carousel">
       <div className="col-12 col-md-3">
         <FormatQuoteRoundedIcon className='reviews__quote-icon' />
-        <h5 className='t-headline-1'>{title}</h5>
+        <h5 className='t-headline-1 mb-5'>{title}</h5>
       </div>
       <div className="col-12 offset-md-1 col-md-8">
 

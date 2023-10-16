@@ -12,7 +12,6 @@ const SwiperCarousel = ({  title, classes = 'swiper--icon-panel', children , typ
     switch(type) {
       case 'icon-panel': 
         return {
-          // when window width is >= 640px
           spaceBetween: 12,
           slidesPerView: 1,
           640: {
@@ -20,7 +19,6 @@ const SwiperCarousel = ({  title, classes = 'swiper--icon-panel', children , typ
           spaceBetween: 12,
 
           },
-          // when window width is >= 768px
           992: {
             slidesPerView: 6,
             spaceBetween: 24,
@@ -28,19 +26,21 @@ const SwiperCarousel = ({  title, classes = 'swiper--icon-panel', children , typ
         }
       case 'card-image': 
         return {
-          // when window width is >= 640px
           spaceBetween: 12,
           slidesPerView: 1,
           640: {
             slidesPerView: 2,
-          spaceBetween: 12,
+            spaceBetween: 12,
 
           },
-          // when window width is >= 768px
           992: {
-            slidesPerView: 4,
-            spaceBetween: 24,
+            slidesPerView: 3,
+            spaceBetween: 12,
           },
+          1200: {
+            slidesPerView: 4,
+            spaceBetween: 12,
+          }
         }
     }
    

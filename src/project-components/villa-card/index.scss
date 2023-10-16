@@ -1,0 +1,47 @@
+.card__body--villa {
+    padding: 12px;
+    justify-content: space-between;
+    
+    @include breakpoint(sm) {
+        flex-wrap: wrap;
+        display: flex;
+
+    }
+    .card__info-prize {
+        color: $text-color;
+        font-family: $secondary-font;
+        font-weight: normal;
+        font-weight: 500;
+    }
+    .card__prize {
+        @include t-headline-1(22px, 1.1);
+        font-weight: bold;
+    
+    }
+    .icons {
+        display: flex;
+        color: $text-color;
+        @include t-bodycopy-small();
+        p:not(:last-child) {
+            margin-right: $spacing-sm;
+        }
+        p {
+            display: flex;
+            align-items: center;
+        }
+        .icon {
+            color: $grey;
+            margin-right: 4px;
+            // font-size: 45px;
+
+        }
+    }
+    .card__description {
+        color: $grey;
+        @include t-bodycopy-small();
+        background: $grey-light;
+        padding: 6px 12px;
+        width: 100%;
+        text-align: center;
+    }
+}
