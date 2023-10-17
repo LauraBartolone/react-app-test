@@ -1,0 +1,20 @@
+.search-filter__label {
+    color: $grey;
+    display: block;
+}
+
+.search-filter {
+
+    .MuiFormControl-root {
+        width: 100%;
+    }
+    .MuiChip-root {
+        flex-direction: row-reverse;
+        margin: 0 2px;
+        .MuiSvgIcon-root.MuiChip-deleteIcon {
+            margin: 0 -4px 0 6px;
+            color: #fff;
+        }
+    }
+    
+}

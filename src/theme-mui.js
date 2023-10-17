@@ -8,6 +8,9 @@ const theme = createTheme({
     secondary: {
       main: '#f0be14',
     },
+    input: {
+      main: '#64b4fa'
+    },
     text: {
       primary: '#333333',
       secondary: '#cccccc',
@@ -20,6 +23,48 @@ const theme = createTheme({
     fontFamily: 'Averta, sans-serif',
     h1: {
       fontFamily: 'NoeDisplay, sans-serif',
+    },
+  },
+  components: {
+    
+    MuiToggleButton: {
+      styleOverrides: {
+        root: {
+          borderRadius: 0,
+          color: '#333333',
+          textTransform: 'none',
+          fontSize: '1rem',
+          "&.Mui-selected": {
+            color: "#fff",
+            backgroundColor: '#64b4fa',
+            boxShadow: '0px 4px 4px #64b4fa6a'
+          },
+          "&:hover": {
+            color: "#fff",
+            backgroundColor: '#64b4fa',
+            boxShadow: '0px 4px 4px #64b4fa6a'
+
+          }
+        }
+      },
+    },
+    MuiChip: {
+      styleOverrides: {
+        root: {
+          backgroundColor: "#64b4fa",
+          color: "#fff",
+        }
+      }
+    },
+    MuiCheckbox: {
+      styleOverrides: {
+        root: {
+          '&$checked': {
+            color: "#64b4fa",
+
+          }
+        }
+      }
     },
   },
 });
