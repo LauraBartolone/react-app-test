@@ -7,13 +7,13 @@
         display: flex;
 
     }
-    .card__info-prize {
+    .card__info-price {
         color: $text-color;
         font-family: $secondary-font;
         font-weight: normal;
         font-weight: 500;
     }
-    .card__prize {
+    .card__price {
         @include t-headline-1(22px, 1.1);
         font-weight: bold;
     

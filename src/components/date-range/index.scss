@@ -1,7 +1,26 @@
 .date-range__pickers {
     display: flex;
     justify-content: space-between;
+    position: relative;
+    border: 1px solid $grey;
+    &:hover {
+        border: 1px solid $black;
+    }
 
+    .date-range__separator {
+        position: absolute;
+        z-index: 1;
+        left: calc(50% - 40px);
+        color: $grey;
+        margin: auto;
+        top: 0;
+        bottom: 0;
+    }
+
+
+    input + .MuiInputAdornment-root {
+        display: none;
+    }
     .MuiOutlinedInput-notchedOutline {
         border: none;
     }

@@ -21,8 +21,8 @@ const VillaCard = ({villa}) => {
         description={villa?.description}
         bodyContent={
             <div className="card__body--villa">
-                <p className="card__info-prize">
-                    From  <span className="card__prize">{villa?.prize?.currency}{villa?.prize?.total}</span> per week
+                <p className="card__info-price">
+                    From  <span className="card__price">{villa?.price?.currency}{villa?.price?.total}</span> per week
                 </p>
                 <div className='icons'>
                     <p>

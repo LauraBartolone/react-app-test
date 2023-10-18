@@ -17,6 +17,7 @@
   }
 
   &.card--default {
+    display: block;
     .card__title {
       @include t-headline-6();
       margin-bottom: 0;
@@ -38,6 +39,7 @@
         width: 100%;
         color: #fff;
         backdrop-filter: blur(4px);
+        background: #00000040;
       }
     }
 

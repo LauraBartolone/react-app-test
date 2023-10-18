@@ -1,13 +1,11 @@
-.search-filter__label {
-    color: $grey;
-    display: block;
-}
 
 .search-filter {
-
-    .MuiFormControl-root {
-        width: 100%;
+    .search-filter__label {
+        color: $grey;
+        display: block;
     }
+
+  
     .MuiInputBase-formControl {
         
         background-color: $grey-light;
@@ -25,5 +23,36 @@
     hr {
         color: $grey;
     }
+
+    .MuiToggleButtonGroup-root .MuiToggleButtonGroup-grouped:not(:first-of-type) {
+        border-left: 1px solid $grey;
+    }
+
+    .MuiDrawer-root &  {
+        .MuiToggleButtonGroup-grouped {
+            width: 100%;
+        }
+        .MuiFormControl-root {
+            width: 100%;
+        }
+    }
     
+    
+
+    .mobile-groupby-3 .MuiToggleButtonGroup-root {
+        @include breakpoint(sm, max) {
+            flex-wrap: wrap;
+            .MuiButtonBase-root {
+                flex-basis: 33.333%;
+                width: 33.333%;
+            }
+        }
+    }
+    .search-filter__actions {
+        @include breakpoint(md, max) {
+            button {
+                width: 100%;
+            }
+        }
+    }
 }

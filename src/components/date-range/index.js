@@ -3,6 +3,7 @@ import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { ClickAwayListener, Input, TextField } from '@mui/material';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import EastIcon from '@mui/icons-material/East';
 
 function DateRangePicker() {
   const [startDate, setStartDate] = useState(null);
@@ -37,63 +38,64 @@ function DateRangePicker() {
     <div className='date-range'>
         <div className="row">
             <div className="col-6">
-                <label className='search-filter__label'>Check in</label>
+                <label className='search-filter__label'>Check-in</label>
             </div>
             <div className="col-6">
-                <label className='search-filter__label'>Check out</label>
+                <label className='search-filter__label'>Check-out</label>
             </div>
         </div>
-            <div className="date-range__pickers">
-                <LocalizationProvider dateAdapter={AdapterDayjs}>
-                   
-                    <ClickAwayListener
-                        disableReactTree={true}
-                        mouseEvent="false"
-                        onClickAway={() => setOpenStart(false)}
-                    >
-                        <DatePicker
-                            value={startDate}
-                            disablePast
-                            autoOk
-                            open={openStart}
-                            onOpen={() => setOpenStart(true)}
-                            onClose={() => setOpenStart(false)}
-                            onChange={date => {
-                                handleStartDateChange(date);
-                            }}
-                           
-                            renderInput={props => (
-                                <TextField {...props}  onClick={() => {
-                                    setOpenStart(true)}} />
-                            )}
-                        />
-                    </ClickAwayListener>
+        <div className="date-range__pickers">
+            <EastIcon className='date-range__separator'/>
+            <LocalizationProvider dateAdapter={AdapterDayjs}>
+                
+                <ClickAwayListener
+                    disableReactTree={true}
+                    mouseEvent="false"
+                    onClickAway={() => setOpenStart(false)}
+                >
+                    <DatePicker
+                        value={startDate}
+                        disablePast
+                        autoOk
+                        open={openStart}
+                        onOpen={() => setOpenStart(true)}
+                        onClose={() => setOpenStart(false)}
+                        onChange={date => {
+                            handleStartDateChange(date);
+                        }}
+                        
+                        renderInput={props => (
+                            <TextField {...props}  onClick={() => {
+                                setOpenStart(true)}} />
+                        )}
+                    />
+                </ClickAwayListener>
 
-                    <ClickAwayListener
-                        disableReactTree={true}
-                        mouseEvent="false"
-                        onClickAway={() => setOpenEnd(false)}
-                    >
-                        <DatePicker
-                            value={endDate}
-                            disablePast
-                            autoOk
-                            open={openEnd}
-                            onOpen={() => setOpenEnd(true)}
-                            onClose={() => setOpenEnd(false)}
-                            onChange={date => {
-                                handleEndDateChange(date);
-                            }}
+                <ClickAwayListener
+                    disableReactTree={true}
+                    mouseEvent="false"
+                    onClickAway={() => setOpenEnd(false)}
+                >
+                    <DatePicker
+                        value={endDate}
+                        disablePast
+                        autoOk
+                        open={openEnd}
+                        onOpen={() => setOpenEnd(true)}
+                        onClose={() => setOpenEnd(false)}
+                        onChange={date => {
+                            handleEndDateChange(date);
+                        }}
 
-                            renderInput={props => (
-                                <TextField {...props} onClick={() => {setOpenEnd(true)}}/>
-                            )}
-                        />
-                    </ClickAwayListener>
-                    
-        
-                </LocalizationProvider>
-            </div>
+                        renderInput={props => (
+                            <TextField {...props} onClick={() => {setOpenEnd(true)}}/>
+                        )}
+                    />
+                </ClickAwayListener>
+                
+    
+            </LocalizationProvider>
+        </div>
       {validationError && <p style={{ color: 'red' }}>{validationError}</p>}
     </div>
   );
