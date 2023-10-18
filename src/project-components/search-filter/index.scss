@@ -8,6 +8,10 @@
     .MuiFormControl-root {
         width: 100%;
     }
+    .MuiInputBase-formControl {
+        
+        background-color: $grey-light;
+    }
     .MuiChip-root {
         flex-direction: row-reverse;
         margin: 0 2px;
@@ -15,6 +19,11 @@
             margin: 0 -4px 0 6px;
             color: #fff;
         }
+    }
+
+    
+    hr {
+        color: $grey;
     }
     
 }

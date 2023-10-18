@@ -1,7 +1,11 @@
+import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers';
 import SideModal from '../components/side-modal';
 import SearchFilter from '../project-components/search-filter';
 import VillaCard from '../project-components/villa-card';
-
+import React, { useState } from 'react';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { Button, Dialog, DialogTitle, Drawer, TextField } from '@mui/material';
+import CloseIcon from '@mui/icons-material/Close';
 
 const Search = () => {
 
@@ -64,7 +68,19 @@ const Search = () => {
       bathroom: 2
     },
   
-  ]
+  ];
+
+
+  const [open, setOpen] = React.useState(false);
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = (value) => {
+    setOpen(false);
+  };
+
+
     return (
     <>
       <div className="container filter-list">
@@ -75,21 +91,22 @@ const Search = () => {
           </div>
           <div></div>
         </div>
+
         <div className='row'>
           <div className='col-12 col-md-1 filter-list__filter-col'>
-            <button className="btn btn-primary btn-search" data-bs-toggle="modal" data-bs-target="#filterModal">
+            <button className="btn btn-primary btn-search" onClick={handleClickOpen}>
               Filter search
             </button>
-            <SideModal id="filterModal" title="Filter">
+            <Drawer onClose={handleClose} open={open}>
+
+              <div class="p-4">
+                <button type="button" className="btn" onClick={handleClose} aria-label="Close">
+                  <CloseIcon data-bs-dismiss="modal"></CloseIcon>
+                </button>
+
                 <SearchFilter></SearchFilter>
-                
-                <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                </p>
-            </SideModal>
-            
-           
-
-
+              </div>
+            </Drawer>
           </div>
           <div className='col-12 col-md-11'>
 

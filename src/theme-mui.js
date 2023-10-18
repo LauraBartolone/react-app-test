@@ -32,6 +32,7 @@ const theme = createTheme({
         root: {
           borderRadius: 0,
           color: '#333333',
+          backgroundColor: '#f9f9f9',
           textTransform: 'none',
           fontSize: '1rem',
           "&.Mui-selected": {
@@ -53,6 +54,22 @@ const theme = createTheme({
         root: {
           backgroundColor: "#64b4fa",
           color: "#fff",
+        }
+      }
+    },
+    MuiSelect: {
+      styleOverrides: {
+        root: {
+          borderRadius: 0,
+
+        }
+      }
+    },
+    MuiBackdrop: {
+      styleOverrides: {
+        root: {
+          backgroundColor: '#ffffffd4',
+
         }
       }
     },
