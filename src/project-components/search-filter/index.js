@@ -2,7 +2,7 @@ import * as React from 'react';
 import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Box, Button, FormControl, InputAdornment, InputLabel, ListItemText, MenuItem, Select, Slider, TextField } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import Checkbox from '@mui/material/Checkbox';
@@ -20,8 +20,7 @@ function pricetext(value) {
     return `${value}€`;
 }
 
-const SearchFilter = ({}) => {
-
+const SearchFilter = ({handleApply}) => {
     var optionsCurrency = [
         {
             'label': '€',
@@ -72,70 +71,92 @@ const SearchFilter = ({}) => {
         "Sicily outdoors",
         "Etna walk",
     ];
-    
-    const [ideas, setIdeas] = useState(() => ['pool', 'luxury']);
-    const [currency, setCurrency] = useState('euro');
 
-    const [experiences, setExperiences] = useState([]);
-    const [location, setLocation] = React.useState('');
-    const [airport, setAirport] = React.useState('');
-    const [selectedRange, setSelectedRange] = useState({ startDate: null, endDate: null });
-    const [priceRange, setPriceRange] = React.useState([20, 37]);
-
-    const [bedroom, setBedroom] = React.useState('');
-
-
-    const handlePriceChange = (event, newValue) => {
-        setPriceRange(newValue);
+    // Initial state
+    const initialStateQuery = {
+        ideas: [],
+        currency: 'euro',
+        experiences: [],
+        location: '',
+        airport: '',
+        selectedRange: { startDate: null, endDate: null },
+        priceRange: [0, 1000],
+        bedroom: '',
+        adults: 0,
+        children: 0,
+        infants: 0,
     };
 
-    
-    const handleChangeCurrency = (event, newCurrency) => {
-        setCurrency(newCurrency);
-    }
+    const [stateQuery, setStateQuery] = useState(initialStateQuery);
 
-    const handleDateRangeChange = (startDate, endDate) => {
-      setSelectedRange({ startDate, endDate });
-    };
-    
-      
-    const handleChangeLocation = (event) =>  {
-        setLocation(event.target.value);
-    }
-    const handleChangeBedroom = (event) =>  {
-        setBedroom(event.target.value);
-    }
-    const handleChangeAirport = (event) =>  {
-        setAirport(event.target.value);
-    }
-
-    const handleChangeExp = (event) => {
-        setExperiences(event.target.value);
-    };
-
-    const handleDeleteExp = (e, value) => {
-        e.preventDefault();
-        console.log("clicked delete");
-        setExperiences((current) => _without(current, value));
-    };
+    useEffect(() => {
+        console.log(stateQuery, 'changed');
+    }, [stateQuery]);
 
     const handleChangeIdeas = (event, newIdea) => {
-        setIdeas(newIdea);
-    }
-    const [adults, setAdults] = React.useState(0);
+        setStateQuery({ ...stateQuery, ideas: newIdea });
+    };
+
+    const handleChangeCurrency = (event, newCurrency) => {
+        setStateQuery({ ...stateQuery, currency: newCurrency });
+    };
+
+    const handleChangeExp = (event) => {
+        setStateQuery({ ...stateQuery, experiences: event.target.value });
+    };
+
+    const handleChangeLocation = (event) => {
+        setStateQuery({ ...stateQuery, location: event.target.value });
+    };
+
+    const handleChangeBedroom = (event) => {
+        setStateQuery({ ...stateQuery, bedroom: event.target.value });
+    };
+
+    const handleChangeAirport = (event) => {
+        setStateQuery({ ...stateQuery, airport: event.target.value });
+    };
+
+    const handleDateRangeChange = (startDate, endDate) => {
+        setStateQuery({ ...stateQuery, selectedRange: { startDate, endDate } });
+    };
+
+    const handlePriceChange = (event, newValue) => {
+        setStateQuery({ ...stateQuery, priceRange: newValue });
+    };
 
     const handleAdultsChange = (val) => {
-        console.log(val);
-        setAdults(val);
-    }
+        setStateQuery({ ...stateQuery, adults: val });
+    };
 
+    const handleChildrenChange = (val) => {
+        setStateQuery({ ...stateQuery, children: val });
+    };
+
+    const handleInfantsChange = (val) => {
+        setStateQuery({ ...stateQuery, infants: val });
+    };
+    
+    const handleDeleteExp = (e, value) => {
+        e.preventDefault();
+        setStateQuery({ ...stateQuery, experiences: (current) => _without(current, value) } );
+    };
+    
+    const handleReset = () => {
+        setStateQuery(initialStateQuery);
+        handleApply(initialStateQuery);
+    };
+
+    const apply = () => {
+        handleApply(stateQuery);
+    };
 
     return (
         <div className='search-filter'>
             <FormControl className='mb-4 mobile-groupby-3'>
                 <label className='search-filter__label'>Villa Ideas</label>
                 <ToggleButtonGroup
-                    value={ideas}
+                    value={stateQuery.ideas}
                     onChange={handleChangeIdeas}
                     aria-label="Villa Ideas"
                 >
@@ -154,7 +175,7 @@ const SearchFilter = ({}) => {
                     labelId="demo-mutiple-chip-checkbox-label"
                     id="demo-mutiple-chip-checkbox"
                     multiple
-                    value={experiences}
+                    value={stateQuery.experiences}
                     onChange={handleChangeExp}
                     onOpen={() => console.log("select opened")}
                     IconComponent={KeyboardArrowRightIcon}
@@ -180,7 +201,7 @@ const SearchFilter = ({}) => {
                 >
                     {experiencesOpts.map((exp) => (
                     <MenuItem key={exp} value={exp}>
-                        <Checkbox color="input" checked={experiences.includes(exp)} />
+                        <Checkbox color="input" checked={stateQuery.experiences.includes(exp)} />
                         <ListItemText primary={exp} />
                     </MenuItem>
                     ))}
@@ -195,7 +216,7 @@ const SearchFilter = ({}) => {
                         <label className='search-filter__label'>Search by Location</label>
                         <Select
                             IconComponent={KeyboardArrowDownIcon}
-                            value={location}
+                            value={stateQuery.location}
                             onChange={handleChangeLocation}
                         >
                             <MenuItem value={'south-sicily'}>South Sicily</MenuItem>
@@ -208,7 +229,7 @@ const SearchFilter = ({}) => {
                         <label className='search-filter__label'>Search by Airport</label>
                         <Select
                             IconComponent={KeyboardArrowDownIcon}
-                            value={airport}
+                            value={stateQuery.airport}
                             onChange={handleChangeAirport}
                         >
                             <MenuItem value={'ct'}>Catania</MenuItem>
@@ -227,19 +248,25 @@ const SearchFilter = ({}) => {
             <div className='row mt-4'>
                 <div className='col-12 col-md-9 d-md-flex'>
                     <NumericInput
+                        key={'adultinput-'+stateQuery.adults}
                         classes="mb-4"
                         label="Adults"
+                        initNum={stateQuery.adults}
                         onValueChange={handleAdultsChange}
                     />
                      <NumericInput
+                        key={'childreninput-'+stateQuery.children}
                         classes="mb-4"
                         label="Children (age 2-12)"
-                        onValueChange={handleAdultsChange}
+                        initNum={stateQuery.children}
+                        onValueChange={handleChildrenChange}
                     />
                     <NumericInput
+                        key={'infantinput-'+stateQuery.infants}
                         classes="mb-4"
                         label="Infants (age > 2)"
-                        onValueChange={handleAdultsChange}
+                        initNum={stateQuery.infants}
+                        onValueChange={handleInfantsChange}
                     />
                 </div>
                 <div className='col-5 col-md-3'>
@@ -247,7 +274,7 @@ const SearchFilter = ({}) => {
                         <label className='search-filter__label'>Bedrooms</label>
                         <Select
                             IconComponent={KeyboardArrowDownIcon}
-                            value={bedroom}
+                            value={stateQuery.bedroom}
                             onChange={handleChangeBedroom}
                         >
                             <MenuItem value={'2-3'}>2-3</MenuItem>
@@ -262,7 +289,7 @@ const SearchFilter = ({}) => {
                         <label className='search-filter__label'>Currency</label>
                         <ToggleButtonGroup
                             exclusive
-                            value={currency}
+                            value={stateQuery.currency}
                             onChange={handleChangeCurrency}
                             aria-label="Currency"
                         >
@@ -281,7 +308,7 @@ const SearchFilter = ({}) => {
                     <Slider
                         color="input"
                         getAriaLabel={() => 'Price range'}
-                        value={priceRange}
+                        value={stateQuery.priceRange}
                         onChange={handlePriceChange}
                         getAriaValueText={pricetext}
                         valueLabelDisplay="on"
@@ -291,9 +318,16 @@ const SearchFilter = ({}) => {
             </div>
 
             <div className='search-filter__actions mt-5 d-flex flex-md-column align-items-center'>
-                <Button disableElevation size="large" variant="contained" color="secondary">Apply filter</Button>
-
-                <Button className='mt-3' disableElevation size="small" variant="text" color="secondary">Reset filter</Button>
+                <Button onClick={apply} disableElevation size="large" 
+                    variant="contained" color="secondary"
+                >
+                    Apply filter
+                </Button>
+                <Button onClick={handleReset} className='mt-3' disableElevation size="small" 
+                    variant="text" color="secondary"
+                >
+                    Reset filter
+                </Button>
             </div>
 
             

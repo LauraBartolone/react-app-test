@@ -3,8 +3,8 @@ import {InputAdornment, TextField} from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 
-function NumericInput({ onValueChange, label, classes='' }) {
-  const [inputNum, setInputNum] = useState(0);
+function NumericInput({ onValueChange, label, classes='', initNum=0 }) {
+  const [inputNum, setInputNum] = useState(initNum);
 
   const subtract = () => {
     if (inputNum !== 0) {

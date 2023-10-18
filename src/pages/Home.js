@@ -68,7 +68,7 @@ const Home = () => {
             <div className='container'>
                 <TextPanel 
                     classes='text-center mt-5 text-panel--default'
-                    title="Choose your next destination" 
+                    title="Choose your next <span>destination</span>" 
                     description="Lorem ipsum dolor sit amet consectetur adipiscing elit sociosqu gravida, posuere mi sapien proin donec vehicula fusce. Class eu mollis pellentesque eleifend in orci netus gravida felis libero quam, habitant leo arcu litora est iaculis inceptos molestie rhoncus nibh. Per pellentesque molestie venenatis tellus ultricies nascetur himenaeos felis lacus, eros accumsan tortor augue magnis facil"
                 ></TextPanel>
 
@@ -129,7 +129,7 @@ const Home = () => {
                 imgOpt='full--inverted'
                 imgAlt='shape'
             >
-                <Reviews title="What they say about"></Reviews>
+                <Reviews title={'What they say <span>about</span>'}></Reviews>
             </BgPanel>
         </>
     );

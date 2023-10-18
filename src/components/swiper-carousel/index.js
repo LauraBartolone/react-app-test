@@ -56,8 +56,8 @@ const SwiperCarousel = ({  title, classes = 'swiper--icon-panel', children , typ
         modules={[Navigation, Pagination]}
         navigation
         pagination={{ clickable: true }}
-        onSlideChange={() => console.log('slide change')}
-        onSwiper={(swiper) => console.log(swiper)}
+        // onSlideChange={() => console.log('slide change')}
+        // onSwiper={(swiper) => console.log(swiper)}
         breakpoints={breakpoints}
       >
        {

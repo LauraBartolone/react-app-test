@@ -39,8 +39,8 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           borderRadius: 0,
-          padding: '16px 24px',
           fontWeight: 600,
+          
           "&.MuiButton-outlinedTertiary": {
             color: "#333",
             backgroundColor: '#f9f9f9',

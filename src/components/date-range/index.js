@@ -5,7 +5,7 @@ import { ClickAwayListener, Input, TextField } from '@mui/material';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import EastIcon from '@mui/icons-material/East';
 
-function DateRangePicker() {
+function DateRangePicker({onDateRangeChange}) {
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
   const [validationError, setValidationError] = useState('');
@@ -18,11 +18,13 @@ function DateRangePicker() {
   const handleStartDateChange = (date) => {
     console.log(date);
     setStartDate(date);
-    // validateDateRange(date, endDate);
+    onDateRangeChange(date, endDate);
+    validateDateRange(date, endDate);
   };
 
   const handleEndDateChange = (date) => {
     setEndDate(date);
+    onDateRangeChange(startDate, date);
     validateDateRange(startDate, date);
   };
 

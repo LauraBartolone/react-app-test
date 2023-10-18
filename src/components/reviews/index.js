@@ -1,7 +1,7 @@
 import Rating from '@mui/material/Rating';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
-
+import parse from 'html-react-parser';
 import React, { useEffect, useState } from 'react';
 import FormatQuoteRoundedIcon from '@mui/icons-material/FormatQuoteRounded';
 
@@ -66,7 +66,9 @@ const Reviews = ({title}) => {
    <div className="row reviews swiper-carousel">
       <div className="col-12 col-md-3">
         <FormatQuoteRoundedIcon className='reviews__quote-icon' />
-        <h5 className='t-headline-1 mb-5'>{title}</h5>
+        {title && 
+        <h5 className='t-headline-1 mb-5 underlined-title'>{parse(title )}</h5>
+        }
       </div>
       <div className="col-12 offset-md-1 col-md-8">
 
